@@ -62,7 +62,7 @@ type ElectorConfig struct {
 	Namespace string
 
 	// The TTL for the election determines the lease duration (the time non-leader
-	// candidates will wait to force acquire leadership), the renew deadline (the
+	// candidates will wait to force acquire leadership), the renewal deadline (the
 	// duration that the acting master will retry refreshing leadership), and the
 	// retry period (the duration that elector nodes should wait between retry
 	// actions).

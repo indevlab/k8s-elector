@@ -259,7 +259,7 @@ func updatePodLabel(cfg *ElectorConfig, clientset *kubernetes.Clientset, value s
 
 	// First, get the Pod. We want to first check whether or not the Pod has the
 	// label key or not. If not, add it; if so, update it.
-	pod, err := clientset.CoreV1().Pods(cfg.Namespace).Get(cfg.PodName, metav1.GetOptions{})
+	pod, err := clientset.CoreV1().Pods(cfg.Namespace).Get(context.TODO(), cfg.PodName, metav1.GetOptions{})
 	if err != nil {
 		return err
 	}
@@ -280,9 +280,11 @@ func updatePodLabel(cfg *ElectorConfig, clientset *kubernetes.Clientset, value s
 	}}
 	payloadBytes, _ := json.Marshal(payload)
 	_, err = clientset.CoreV1().Pods(cfg.Namespace).Patch(
+		context.TODO(),
 		cfg.PodName,
 		types.JSONPatchType,
 		payloadBytes,
+		metav1.PatchOptions{},
 	)
 	return err
 }

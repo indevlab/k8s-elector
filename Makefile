@@ -38,8 +38,7 @@ cover: test  ## Run unit tests and open the coverage report
 
 .PHONY: docker
 docker:  ## Build the docker image
-	docker build -f Dockerfile \
-		-t $(IMAGE_NAME):latest .
+	docker build -f Dockerfile -t $(IMAGE_NAME):$(BIN_VERSION) -t $(IMAGE_NAME):latest .
 
 .PHONY: fmt
 fmt:  ## Run goimports on all go files

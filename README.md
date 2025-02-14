@@ -10,7 +10,7 @@ them leader election capabilities, but it can run on its own as well. For an exa
 you can run just the elector containers with
 
 ```
-$ kubectl run k8s-elector --image=vaporio/k8s-elector --replicas=3 -- -election=example
+$ kubectl run k8s-elector --image=indevlab/k8s-elector --replicas=3 -- -election=example
 ``` 
 
 > **Note** By default, k8s-elector tries to use a Kubernetes LeaseLock. If running a
@@ -25,7 +25,7 @@ leadership. k8s-elector exposes a basic HTTP API to provide leadership status in
 You can enable and conifgure it with the `-http` flag.
 
 ```
-$ kubectl run k8s-elector --image=vaporio/k8s-elector --replicas=3 -- -election=example -lock-type=configmaps -http=0.0.0.0:5002
+$ kubectl run k8s-elector --image=indevlab/k8s-elector --replicas=3 -- -election=example -lock-type=configmaps -http=0.0.0.0:5002
 ``` 
 
 You can look through the logs to see a leader was elected and you can verify [from within
@@ -85,7 +85,7 @@ Method: `GET`
   "is_leader": false,
   "leader": "k8s-elector-74c54b485f-hgf9z",
   "node": "k8s-elector-74c54b485f-564ht",
-  "timestamp": "2019-05-02T18:28:51Z"
+  "timestamp": "2025-02-02T18:28:51Z"
 }
 ```
 
